@@ -46,6 +46,7 @@ const SignInForm = () => {
       } = await SignUserWithEmailAndPassword(email, password)
       
       setFormFields(defaultFormFields)
+      navigate("/")
       
 
     } catch (error) {

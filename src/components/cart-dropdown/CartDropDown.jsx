@@ -5,6 +5,8 @@ import { CartContext } from '../../contexts/cart.context'
 import Button from '../button/Button'
 import CartItem from '../cart-item/CartItem'
 
+import {CartDropDownContainer} from './cart-dropdown.styles'
+
 const CartDropDown = () => {
 
   const navigate = useNavigate()
@@ -16,7 +18,7 @@ const CartDropDown = () => {
   const { cartItems } = useContext(CartContext)
 
   return (
-    <CartDropDown>
+    <CartDropDownContainer>
        <div className="cart-items">
         {
          cartItems.map((item)=>
@@ -25,7 +27,7 @@ const CartDropDown = () => {
        </div>
        <Button style={{padding:'0px'}} onClick={navigateToCheckOut}>GO TO CHECKOUT</Button>
        
-    </CartDropDown>
+    </CartDropDownContainer>
   )
 }
 

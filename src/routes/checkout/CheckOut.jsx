@@ -3,7 +3,7 @@ import CheckOutItem from "../../components/checkout-item/CheckOutItem"
 import { CartContext } from "../../contexts/cart.context"
 import { Button } from "./checkout.styles"
 
-
+import {CheckOutContainer} from './checkout.styles'
 
 const CheckOut = () => {
     const { cartItems, setIsActive, totalAmount} = useContext(CartContext)
@@ -13,7 +13,7 @@ const CheckOut = () => {
     }, [])
 
   return (
-       <CheckOut className='checkout-container'>
+       <CheckOutContainer className='checkout-container'>
          <div className='checkout-header'>
            <div className='header-block'>
              <span>Product</span>
@@ -40,7 +40,7 @@ const CheckOut = () => {
         <Button>
           Hello
         </Button>
-    </CheckOut>
+    </CheckOutContainer>
   )
 }
 

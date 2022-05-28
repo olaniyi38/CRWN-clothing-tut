@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const CheckOut = styled.div`
+export const CheckOutContainer = styled.div`
     width: 55%;
     min-height: 90vh;
     display: flex;

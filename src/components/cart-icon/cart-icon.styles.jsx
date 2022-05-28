@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const CartIcon = styled.div`
+export const CartIconContainer = styled.div`
     width: 45px;
     height: 45px;
     position: relative;
