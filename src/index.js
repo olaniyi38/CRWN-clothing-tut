@@ -1,56 +1,25 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
+import { StrictMode } from 'react';
+import {createRoot} from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
-import './css/index.css'
-
-import App from "./App";
-import { UserProvider} from "./contexts/user.context";
-import { CategoriesProvider } from "./contexts/categories.context";
-import { CartStateProvider } from "./contexts/cart.context";
+import App from './App';
 
 
-const rootElement = document.getElementById("root");
-const root = createRoot(rootElement);
 
+import { store } from './store/store'
 
+import './css/index.css';
+
+const container = document.getElementById('root');
+const root = createRoot(container)
 
 root.render(
   <StrictMode>
+    <Provider store={store}>
     <BrowserRouter>
-        <UserProvider>
-          <CategoriesProvider>
-          <CartStateProvider>
             <App />
-          </CartStateProvider>
-          </CategoriesProvider>
-        </UserProvider>
     </BrowserRouter>
-    
+    </Provider>
   </StrictMode>
 );
-
-// import react from 'react'
-// import reactDom from 'react-dom'
-
-// const Person = (props) => {
-//   return react.createElement('div', {}, [
-//     react.createElement('h1', {}, props.name),
-//     react.createElement('p', {}, props.occupation)
-//   ])
-// }
-
-// const App = () => {
-//   return react.createElement('div', {}, [
-//     react.createElement('h1', {
-//       className: 'title'
-//     }, "Hello world"),
-//     react.createElement(Person, {
-//       name: 'yihus',
-//       occupation: 'instructor'
-//     }, null)
-
-//   ])
-// }
-
-// reactDom.render(react.createElement(App), document.getElementById('root'))

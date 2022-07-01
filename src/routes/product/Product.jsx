@@ -1,10 +1,12 @@
-import { useContext } from 'react'
+import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
 
 
 import Button from '../../components/button/Button'
-import { CategoriesContext } from '../../contexts/categories.context'
+import { selectCategoriesMap } from '../../store/categories/categories.selectors'
+
 
 import './product.scss'
 
@@ -12,14 +14,13 @@ const Product = () => {
 
   const { productName,sectionName } = useParams()
 
-  const { categoriesMap } = useContext(CategoriesContext)
+  const { categoriesMap } = useSelector(selectCategoriesMap)
 
   const productToShow = categoriesMap[sectionName].find((product)=>{
       return productName.toLowerCase() === product.name.toLowerCase()
   })
 
-  console.log(categoriesMap);
- 
+  console.log(productToShow);
 
   const { name, price, imageUrl } = productToShow
 

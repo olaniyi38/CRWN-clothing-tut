@@ -1,15 +1,22 @@
-import { useContext, useEffect } from "react"
+import {  useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import CheckOutItem from "../../components/checkout-item/CheckOutItem"
-import { CartContext } from "../../contexts/cart.context"
-import { Button } from "./checkout.styles"
+
+import { selectCartItems, selectCartTotal } from "../../store/cart/cart.selector"
+import { CART_ACTION_TYPES } from "../../store/cart/cart.types"
+import { createAction } from "../../utils/reducer/reducer.utils"
 
 import {CheckOutContainer} from './checkout.styles'
 
 const CheckOut = () => {
-    const { cartItems, setIsActive, totalAmount} = useContext(CartContext)
+    const cartItems = useSelector(selectCartItems)
+
+    const cartTotal = useSelector(selectCartTotal)
+
+    const dispatch = useDispatch()
   
     useEffect(()=>{
-        setIsActive(false)
+        dispatch( createAction(CART_ACTION_TYPES.toggleIsCartOpen) )
     }, [])
 
   return (
@@ -36,10 +43,8 @@ const CheckOut = () => {
             return  <CheckOutItem key={cartItem.id} product={cartItem} />
           })
         }
-        <div className='total'>TOTAL: ${totalAmount}</div>
-        <Button>
-          Hello
-        </Button>
+        <div className='total'>TOTAL: ${cartTotal}</div>
+          
     </CheckOutContainer>
   )
 }

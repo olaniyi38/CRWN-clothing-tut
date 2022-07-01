@@ -1,18 +1,21 @@
-import { useContext } from 'react'
-
-import { CartContext } from '../../contexts/cart.context'
 
 import './product-card.scss'
 import Button from '../button/Button'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { addItemToCart } from '../../store/cart/cart.actions'
+import { selectCartItems } from '../../store/cart/cart.selector'
 
 const ProductCard = ({product, sectionName}) => {
-    const {name, imageUrl, price, id } = product
 
-    const { addItemToCart } = useContext(CartContext)
+  const dispatch = useDispatch()
+
+    const {name, imageUrl, price} = product
+
+    const cartItems = useSelector(selectCartItems)
 
     const addProductToCart = () =>{ 
-      addItemToCart(product)
+     dispatch(addItemToCart(cartItems, product))
     }
 
     const navigate = useNavigate()
